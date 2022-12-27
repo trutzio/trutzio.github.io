@@ -3,9 +3,24 @@ title: Spring Boot mit GraalVM
 tags:
     - Spring Boot
     - GraalVM
+    - Docker
+    - Serverless
+    - Packeto Buildpacks
 ---
 
 Möchtest Du eine Spring Boot Anwendung deutlich schneller starten als bisher? Das Zauberwort dafür lautet [GraalVM](https://www.graalvm.org/). Das GraalVM JDK kompiliert deine Spring Boot Anwendung in eine direkt ausführbare Datei, die keine Java Runtime mehr benötigt. Deine Anwendung wird zwar dadurch vom Betriebsystem abhängig indem sie ausgeführt wird, sie startet dann aber auch deutlich schneller.
+
+## Zusammenfassung
+
+Mit dem Befehl
+
+```bash
+mvn spring-boot:build-image -Pnative
+```
+
+lassen sich sehr schnell dockerizierte, native Spring Boot Anwendungen bauen. Vorausgesetzt wird aber für den Bau eine Docker Installation.
+
+## Beispiel
 
 In diesem Artikel wird ein trivialer Spring Boot REST Service als native Anwendung innerhalb eines Docker Containers ausgeführt. Es wird keine GraalVM Installation benötigt, da eine dockerisierte Version von GraalVM verwendet wird. Spring Boot 3 und eine Docker Installation werden vorausgesetzt.
 
@@ -21,7 +36,7 @@ Ich arbeite mit der [Spring Tool Suite](https://spring.io/tools) als Entwicklung
 
 ![](/assets/images/spring-boot-graalvm-2.jpg)
 
-Damit wir etwas zum Testen haben, wird nun ein "Hello world!" REST Service in die Spring Boot Anwendung eingebaut:
+Damit wir etwas zum Testen haben, wird nun ein sehr, sehr einfacher "Hello world!" REST Service in die Spring Boot Anwendung eingebaut.
 
 ```java
 @SpringBootApplication
@@ -31,6 +46,7 @@ public class TestGraalvmApplication {
 	public static void main(String[] args { 
 		SpringApplication.run(TestGraalvmApplication.class, args);
 	}
+
 	@GetMapping("/")
 	String hello() {
 		return "Hello world!";
@@ -42,13 +58,42 @@ Die gerade erzeugte minimale Spring Boot Anwendung benötigt ca. eine Sekunde um
 
 ![](/assets/images/spring-boot-graalvm-3.jpg)
 
-Nun haben wir eine Spring Boot Anwendung mit einem minimalen REST Service. Jetzt wollen wir diese Anwendung dockerisieren. Dies ist dank Spring Boot Unterstützung extrem einfach, mit dem Befehl auf der Kommandozeile:
+Nachdem wir nun eine Spring Boot Anwendung mit einem minimalen REST Service, wollen wir diese Anwendung dockerisieren. Dies ist dank Spring Boot Unterstützung extrem einfach, mit dem Befehl:
 
 ```bash
 mvn spring-boot:build-image
 ```
 
-wir die Anwendung gebaut und gleichzeitig in ein Docker Image verpackt. Damit aber der obige Befehl funktioniert, muss Docker lokal installiert und hochgefahren sein.
+wir die Anwendung gebaut und gleichzeitig in ein Docker Image verpackt. Damit aber der obige Befehl funktioniert, muss Docker lokal installiert und hochgefahren sein. Wie man in dem Log des obigen Befehls sieht, werden [Packeto Buildpacks](https://paketo.io/docs/concepts/buildpacks/) für den Bau des Docker Images verwendet. Mit `docker images` sieht man, dass unsere minimale Spring Boot Anwendung nun auch als Docker Image vorliegt.
+
+Wenn Du nun unsere dockerisierte Spring Boot Anwendung startest mit dem Befehl
+
+```bash
+docker run --rm test-graalvm:0.0.1-SNAPSHOT
+```
+
+siehst Du, dass die Startzeit weiterhin bei ca. einer Sekunde geblieben ist, die dockerisierte Spring Boot Anwendung ist eine normale Java Anwendung geblieben, die ein Java VM benötigt.
+
+![](/assets/images/spring-boot-graalvm-4.jpg)
+
+Um eine **native Spring Boot Anwendung** zu bauen, muss der obige Maven Befehl lediglich um das Profil `native` ergänzt werden. 
+
+```bash
+mvn spring-boot:build-image -Pnative
+```
+
+Der Bau der Anwendung dauer jetzt erheblich länger und ist rechenzeitintensiver. Das Ergebnis nach ca. 1.5 Minuten (auf meinem Rechner) ist ein Docker Image, das unsere Spring Boot Anwendung enthält als native Anwendung. Wenn wir nun diese starten mit
+
+```bash
+docker run --rm test-graalvm:0.0.1-SNAPSHOT
+```
+
+dann ist sie nach ca. 0.026 Sekunden hochgefahren, also erheblich schneller als unsere Andwendung in der normalen Java Variante.
+
+## Fazit
+
+- mit der neuen Spring Boot 3 Version lassen sich extrem einfach native Spring Boot Anwendungen bauen, die innerhalb eines Docker Containers laufen,
+- die Startzeit von nativen Anwendungen (GraalVM) ist erheblich kleiner als von normalen Java Anwendungen, die unter einer Java VM laufen und dadurch für [Serverless Szenarien](https://en.wikipedia.org/wiki/Serverless_computing) sehr interessant
 
 ## Links
 - [Spring Boot Docs: GraalVM Native Image Support](https://docs.spring.io/spring-boot/docs/current/reference/html/native-image.html)
