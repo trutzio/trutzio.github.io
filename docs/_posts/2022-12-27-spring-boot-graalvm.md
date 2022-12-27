@@ -8,7 +8,7 @@ tags:
     - Packeto Buildpacks
 ---
 
-Möchtest Du eine Spring Boot Anwendung deutlich schneller starten als bisher? Das Zauberwort dafür lautet [GraalVM](https://www.graalvm.org/). Das GraalVM JDK kompiliert deine Spring Boot Anwendung in eine direkt ausführbare Datei, die keine Java Runtime mehr benötigt. Deine Anwendung wird zwar dadurch vom Betriebsystem indem sie ausgeführt wird abhängig, sie startet dann aber auch deutlich schneller.
+Möchtest Du deine Spring Boot Anwendung deutlich schneller starten als bisher? Das Zauberwort dafür lautet [GraalVM](https://www.graalvm.org/). Das GraalVM JDK kompiliert deine Spring Boot Anwendung in eine direkt ausführbare Datei, die keine Java Runtime mehr benötigt. Deine Anwendung wird zwar dadurch vom Betriebsystem indem sie ausgeführt wird abhängig, sie startet dann aber auch deutlich schneller.
 
 ## Zusammenfassung
 
