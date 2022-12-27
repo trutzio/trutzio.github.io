@@ -2,7 +2,7 @@ remote_theme: "mmistakes/minimal-mistakes@4.24.0"
 minimal_mistakes_skin: "contrast"
 include: ["_pages"]
 title: "trutz.io"
-subtitle: "Software Engineering"
+subtitle: "Trutz Software Consulting GmbH"
 locale: de
 date_format: "%-d.%-m.%Y"
 url: "https://trutz.io"
