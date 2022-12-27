@@ -1,0 +1,27 @@
+remote_theme: "mmistakes/minimal-mistakes@4.24.0"
+minimal_mistakes_skin: "contrast"
+include: ["_pages"]
+title: "trutz.io"
+subtitle: "Software Engineering"
+locale: de
+date_format: "%-d.%-m.%Y"
+url: "https://trutz.io"
+author:
+  name     : "Christian Trutz"
+  avatar   : "/assets/images/bio-photo.jpg"
+  bio      : "Spring Boot & DevOps"
+  links:
+    - label : "YouTube"
+      icon  : "fab fa-fw fa-youtube"
+      url   : "https://www.youtube.com/@trutzio"
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      read_time : true
+      share     : true
+      layout    : single
+plugins:
+  - jekyll-include-cache
+  - jekyll-sitemap # generiert die sitemap.xml für Google
