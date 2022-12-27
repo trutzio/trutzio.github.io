@@ -12,8 +12,12 @@ In diesem Artikel wird ein trivialer Spring Boot REST Service als native Anwendu
 Erstelle mit Hilfe von [Spring Initializr](https://start.spring.io/)  eine minimale Spring Boot Anwendung und füge als Abhängigkeiten (Dependencies):
 - Spring Web und
 - GraalVM Native Support
+ 
+![Spring Boot REST Service mit GraalVM](/assets/images/spring-boot-graalvm-1.jpg)
 
-![[spring-boot-graalvm-1.jpg]]
+ein. Drücke auf den Knopf "GENERATE", speichere die heruntergeladene zip Datei und importiere das Spring Boot Projekt aus der zip Datei in deine Entwicklungsumgebung.
+
+Ich arbeite mit der [Spring Tool Suite](https://spring.io/tools) als Entwicklungsumgebung, so dass ich direkt über die IDE das obige Spring Boot Projekt erzeugen kann.
 
 ## Links
 - [Spring Boot Docs: GraalVM Native Image Support](https://docs.spring.io/spring-boot/docs/current/reference/html/native-image.html)
