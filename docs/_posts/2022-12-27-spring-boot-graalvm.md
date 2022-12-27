@@ -9,5 +9,11 @@ Möchtest Du eine Spring Boot Anwendung deutlich schneller starten als bisher? D
 
 In diesem Artikel wird ein trivialer Spring Boot REST Service als native Anwendung innerhalb eines Docker Containers ausgeführt. Es wird keine GraalVM Installation benötigt, da eine dockerisierte Version von GraalVM verwendet wird. Spring Boot 3 und eine Docker Installation werden vorausgesetzt.
 
+Erstelle mit Hilfe von [Spring Initializr](https://start.spring.io/)  eine minimale Spring Boot Anwendung und füge als Abhängigkeiten (Dependencies):
+- Spring Web und
+- GraalVM Native Support
+
+![[spring-boot-graalvm-1.jpg]]
+
 ## Links
 - [Spring Boot Docs: GraalVM Native Image Support](https://docs.spring.io/spring-boot/docs/current/reference/html/native-image.html)
