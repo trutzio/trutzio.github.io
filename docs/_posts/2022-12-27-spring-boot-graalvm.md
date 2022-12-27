@@ -21,7 +21,34 @@ Ich arbeite mit der [Spring Tool Suite](https://spring.io/tools) als Entwicklung
 
 ![](/assets/images/spring-boot-graalvm-2.jpg)
 
+Damit wir etwas zum Testen haben, wird nun ein "Hello world!" REST Service in die Spring Boot Anwendung eingebaut:
 
+```java
+@SpringBootApplication
+@RestController
+public class TestGraalvmApplication {
+
+	public static void main(String[] args { 
+		SpringApplication.run(TestGraalvmApplication.class, args);
+	}
+	@GetMapping("/")
+	String hello() {
+		return "Hello world!";
+	}
+}
+```
+
+Die gerade erzeugte minimale Spring Boot Anwendung benötigt ca. eine Sekunde um hochzufahren und liefert auf `https://localhost:8080` einfach nur den String "Hello world!".
+
+![](/assets/images/spring-boot-graalvm-3.jpg)
+
+Nun haben wir eine Spring Boot Anwendung mit einem minimalen REST Service. Jetzt wollen wir diese Anwendung dockerisieren. Dies ist dank Spring Boot Unterstützung extrem einfach, mit dem Befehl auf der Kommandozeile:
+
+```bash
+mvn spring-boot:build-image
+```
+
+wir die Anwendung gebaut und gleichzeitig in ein Docker Image verpackt. Damit aber der obige Befehl funktioniert, muss Docker lokal installiert und hochgefahren sein.
 
 ## Links
 - [Spring Boot Docs: GraalVM Native Image Support](https://docs.spring.io/spring-boot/docs/current/reference/html/native-image.html)
