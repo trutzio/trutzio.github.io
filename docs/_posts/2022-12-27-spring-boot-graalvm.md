@@ -18,7 +18,7 @@ Mit dem Befehl
 mvn spring-boot:build-image -Pnative
 ```
 
-lassen sich sehr schnell dockerizierte, native Spring Boot 3 Anwendungen bauen. Vorausgesetzt wird aber für den Bau eine Docker Installation.
+lassen sich sehr schnell dockerisierte, native Spring Boot 3 Anwendungen bauen. Vorausgesetzt wird aber für den Bau eine Docker Installation.
 
 ## Beispiel
 
