@@ -6,41 +6,41 @@ tags:
     - Spring Boot Starter
 ---
 
-In dieser Lektion wird ein erstes, sehr einfaches Spring Boot Projekt mit [Spring Initializr](https://start.spring.io/) erstellt.
+In dieser Lektion wird ein erstes, sehr einfaches Spring Boot Projekt von Grund auf mit [Spring Initializer](https://start.spring.io/) erstellt.
 
 Spring Initializr kann auf zwei verschiedene Arten verwendet werden:
-- als Web Anwendung unter https://start.spring.io/ oder
-- direkt über die IDE deiner Wahl, also [Eclipse](https://www.eclipse.org/), [Spring Tools 4](https://spring.io/tools), [IntelliJ](https://www.jetbrains.com/idea/) oder [Visual Studio Code](https://code.visualstudio.com/).
+1. als Webanwendung unter https://start.spring.io/ oder
+2. direkt über die IDE der Wahl, z.B. [Eclipse](https://www.eclipse.org/), [Spring Tools 4](https://spring.io/tools), [IntelliJ](https://www.jetbrains.com/idea/) oder [Visual Studio Code](https://code.visualstudio.com/).
 
-Mit der Spring Tools 4 IDE ist die Verwendung von Spring Initializr besonders einfach, da keine zusätzlichen Plugins installiert werden müssen. Im Folgenden wird daher die IDE Spring Tools 4 verwendet.
+Mit der IDE "Spring Tools 4" ist die Verwendung von Spring Initializr besonders einfach, da keine zusätzlichen Plugins installiert werden müssen. Im Folgenden wird daher die Spring Tools 4 IDE verwendet.
 
-Erstelle in der Spring Tools IDE ein neues Projekt mit dem "Spring Starter Project" Wizard.
+Ein neues Spring Boot Projekt wird am besten mit dem "Spring Starter Project" Wizard erstellt.
 
 ![](/assets/images/spring-boot-grundlagen-001.jpg)
 
-Ein Spring Boot Projekt ist zunächst ein ganz normales Java Projekt, das entweder  [[Maven]] oder [[Gradle]] als Build System verwendet. Maven ist in Unternehmen weit verbreitet, daher werde ich es in dieser Lektion verwenden.
+Ein Spring Boot Projekt ist zunächst ein ganz normales Java Projekt, das entweder [[Maven]] oder [[Gradle]] als Build System verwendet. Maven ist in Unternehmen weit verbreitet und wird daher im Folgenden verwendet.
 
-Auf der ersten Seite des Wizards werden das Build System (Maven/Gradle) und die GAV (Group/Artefact/Version) Koordinaten des neuen Projekts eingegeben. Bitte wähle als Packaging "Jar" und ändere es nicht auf "War".
+Auf der ersten Seite des Wizards werden das Build System (Maven oder Gradle) und die Maven GAV Koordinaten (Group/Artefact/Version)  des neuen Projekts eingegeben. Als Package wird "Jar" und nicht "War" gewählt.
 
 ![](/assets/images/spring-boot-grundlagen-002.jpg)
 
-Auf der nächsten Seite des Wizard wird die Version von Spring Boot angegeben, die du verwenden möchtest. Zum Zeitpunkt der Erstellung dieses Videos war 3.0.1 die aktuellste stabile Version von Spring Boot.
+Auf der nächsten Seite des Wizard wird die Version von Spring Boot angegeben, die in dem Projekt verwendet wird.
 
-In der Liste unter der Versionsnummer kannst Du die Frameworks angeben, die Du als Abhängigkeiten in Deinem neuen Projekt haben möchtest. Ich wähle hier nur "Spring Web" aus, da ich im Folgenden einen REST-Service erstellen möchte.
+In der Liste unter der Spring Boot Versionsnummer werden die Frameworks angegeben, von denen das Spring Boot Projekt abhängig ist. Als Abhängigkeit wird nur "Spring Web" ausgewählt, da im Folgenden ein REST Service erstellt werden soll.
 
 ![](/assets/images/spring-boot-grundlagen-003.jpg)
 
-Auf der letzten Seite des IDE Wizards siehst Du eine URL, in der Deine bisherigen Angaben als URL-Parameter zusammengefasst sind. Du könntest diese URL auch direkt im Browser verwenden, um das Spring Boot Projekt herunterzuladen. Wir möchten dies nicht, da die Spring Tools das Projekt direkt in der IDE erstellen.
-
 Nach einem Klick auf "Finish" wird wie gewünscht ein neues Spring Boot Projekt in der IDE erstellt. Als Projektname wird die zuvor angegebene ArtifactId verwendet.
 
-Die Datei `pom.xml` in dem neu erstellten Projekt enthält die Abhängigkeit "Spring Web", die ich vorhin im IDE Wizard eingetragen habe.
+## Abhängigkeiten (Dependecies)
+
+Die Datei `pom.xml` im neu erstellten Projekt enthält die Abhängigkeit "Spring Web", die ich zuvor im IDE Wizard eingetragen habe.
 
 ![](/assets/images/spring-boot-grundlagen-004.jpg)
 
-In der Spring Boot Terminologie werden die Abhängigkeiten "Starter" bezeichnet. So habe ich vorhin den Web Starter, auch `starter-web` genannt, als Abhängigkeit in der IDE hinzugefügt.
+In der Spring Boot Terminologie werden die Abhängigkeiten "Starter" genannt. Die zuvor im Wizard angegebene Abhängigkeit "Spring Web" erscheint daher in der Datei `pom.xml` als Abhängigkeit `starter-web`.
 
-Der `starter-test` wird standardmäßig hinzugefügt, da das Schreiben von Unit-Tests als Best Practice angesehen wird. Der Test Starter enthält [[JUnit 5]] und [[Mockito]] als transitive Abhängigkeiten, so dass das Erstellen von JUnit 5 Tests leicht möglich ist.
+Die Abhängigkeit `starter-test` wird standardmäßig hinzugefügt, da das Schreiben von Unit-Tests in Spring Boot als Best Practice angesehen wird. Der Test Starter enthält automatisch [[JUnit 5]] und [[Mockito]] als transitive Abhängigkeiten, um die Erstellung von JUnit 5 Tests zu erleichtern.
 
 Das Verzeichnis `src/main/java` enthält bereits eine triviale Spring Boot Anwendung, die direkt gestartet werden kann. Im Verzeichnis `src/test/java` befindet sich bereits ein leerer JUnit-Test.
 
