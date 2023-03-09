@@ -12,10 +12,10 @@ tags:
 >:man:
 Bevor du Visual Studio Code verwenden kannst, musst du es natürlich auf deinem Computer installieren.
 
->:computer: Browser https://code.visualstudio.com/
+>:computer: **Browser https://code.visualstudio.com/**
 Bitte gehe auf https://code.visualstudio.com/, klicke auf den blauen Download-Button und warte kurz, bis der Download abgeschlossen ist.
 
-:computer: Browser https://code.visualstudio.com/ mit Klick auf den Download Button
+:computer: **Browser https://code.visualstudio.com/ mit Klick auf den Download Button**
 Visual Studio Code kann für macOS, Windows und Linux heruntergeladen werden.
 
 :computer: VSC Willkommensfenster und zeigen auf die Tutorials (Walkthroughs)

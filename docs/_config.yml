@@ -25,4 +25,4 @@ defaults:
 plugins:
   - jekyll-include-cache
   - jekyll-sitemap # generiert die sitemap.xml für Google
-  - jemoji
+  - jemoji # Markdown Emojis, wie zum Beispiel :man: oder :computer: werden durch die entsprechenden Bilder ersetzt
