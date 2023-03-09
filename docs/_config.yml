@@ -25,3 +25,4 @@ defaults:
 plugins:
   - jekyll-include-cache
   - jekyll-sitemap # generiert die sitemap.xml für Google
+  - jemoji
